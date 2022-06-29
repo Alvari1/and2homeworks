@@ -2,4 +2,10 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="hello">Привет, Мир!</string>
+    <string name="avatar_description">Аватар автора</string>
+    <string name="likes_description">Иконка лайков</string>
+    <string name="shares_description">Иконка связей</string>
+    <string name="views_description">Иконка просмотров</string>
+    <string name="options_description">Опции</string>
+
 </resources>
