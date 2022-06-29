@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/headerBarrier"
-        tools:text="@tools:sample/lorem/random" />
+        tools:text="@tools:sample/lorem" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/bottomBarrier"
@@ -103,7 +103,6 @@
         app:layout_constraintBottom_toBottomOf="@id/likePic"
         app:layout_constraintTop_toTopOf="@id/likePic"
         app:layout_constraintStart_toEndOf="@id/likesCount"
-        app:layout_constraintend="@id/likesCount"
         tools:srcCompat="@drawable/ic_share_24dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
