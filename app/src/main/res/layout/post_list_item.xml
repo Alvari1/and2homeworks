@@ -13,7 +13,7 @@
         android:contentDescription="@string/avatar_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/ic_netology_48dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/authorName"
@@ -27,6 +27,7 @@
         app:layout_constraintEnd_toStartOf="@id/options"
         app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toTopOf="@+id/avatar"
+        android:textColor="@android:color/black"
         tools:text="имя автора поста" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -39,6 +40,7 @@
         app:layout_constraintEnd_toEndOf="@id/authorName"
         app:layout_constraintStart_toStartOf="@id/authorName"
         app:layout_constraintTop_toBottomOf="@id/authorName"
+        android:textColor="@android:color/black"
         tools:text="DD.MM.YYYY" />
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -46,10 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/options_description"
         android:src="@drawable/ic_options_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/options_description"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/headerBarrier"
@@ -63,7 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/headerBarrier"
-        tools:text="@tools:sample/lorem" />
+        android:textColor="@android:color/black"
+        tools:text="@tools:sample/lorem/random" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/bottomBarrier"
@@ -92,6 +96,7 @@
         app:layout_constraintBottom_toBottomOf="@id/likePic"
         app:layout_constraintTop_toTopOf="@id/likePic"
         app:layout_constraintStart_toEndOf="@id/likePic"
+        android:textColor="@android:color/black"
         tools:text="100000" />
 
     <ImageView
@@ -116,6 +121,7 @@
         app:layout_constraintEnd_toStartOf="@+id/viewsPic"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/sharesPic"
+        android:textColor="@android:color/black"
         tools:text="10000" />
 
     <ImageView
@@ -138,6 +144,7 @@
         app:layout_constraintBottom_toBottomOf="@id/sharesPic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/sharesPic"
+        android:textColor="@android:color/black"
         tools:text="10000" />
 
     <androidx.appcompat.widget.AppCompatTextView
