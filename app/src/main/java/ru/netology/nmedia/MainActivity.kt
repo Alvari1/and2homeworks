@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             published = System.currentTimeMillis(),
             likes = 0U,
             shares = 0U,
-            views = 1999U,
+            views = 0U,
             likedByMe = false
         )
 
