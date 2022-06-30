@@ -144,12 +144,4 @@
         app:layout_constraintTop_toTopOf="@id/sharesPic"
         android:textColor="@android:color/black"
         android:text="10000" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/endLine"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/endLine_size"
-        android:background="@color/red"
-        android:layout_marginTop="@dimen/small_spacing"
-        app:layout_constraintTop_toBottomOf="@id/likePic"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
