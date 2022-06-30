@@ -98,7 +98,7 @@
         app:layout_constraintTop_toTopOf="@id/likePic"
         app:layout_constraintStart_toEndOf="@id/likePic"
         android:textColor="@color/common_color"
-        android:text="10000" />
+        android:text="0" />
 
     <ImageView
         android:id="@+id/sharesPic"
@@ -122,7 +122,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/sharesPic"
         android:textColor="@color/common_color"
-        android:text="10000" />
+        android:text="0" />
 
     <ImageView
         android:id="@+id/viewsPic"
@@ -144,5 +144,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/sharesPic"
         android:textColor="@color/common_color"
-        android:text="10000" />
+        android:text="@string/no_value" />
 </androidx.constraintlayout.widget.ConstraintLayout>
