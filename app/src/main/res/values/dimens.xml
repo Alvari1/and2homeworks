@@ -2,7 +2,7 @@
 <resources>
     <dimen name="common_spacing">16dp</dimen>
     <dimen name="post_avatar_size">48dp</dimen>
-    <dimen name="bottom_icon_size">16dp</dimen>
+    <dimen name="bottom_icon_size">24dp</dimen>
     <dimen name="small_spacing">8dp</dimen>
     <dimen name="count_size">64dp</dimen>
     <dimen name="endLine_size">2dp</dimen>
