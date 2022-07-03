@@ -24,16 +24,14 @@ class MainActivity : AppCompatActivity() {
             viewModel.onLikeClicked()
 
             //TODO заглушка на просмотры, убать при реализаии просмотра постов из списка
-            //post.views = post.views + 1U
-            //binding.viewsCount?.text = getFormattedCounter(post.views)
+            viewModel.viewed()
         }
 
         binding.sharesPic?.setOnClickListener {
             viewModel.onShareClicked()
 
             //TODO заглушка на просмотры, убать при реализаии просмотра постов из списка
-//            post.views = post.views + 1U
-//            binding.viewsCount?.text = getFormattedCounter(post.views)
+            viewModel.viewed()
         }
     }
 

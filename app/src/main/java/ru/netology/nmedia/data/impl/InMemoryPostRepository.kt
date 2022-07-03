@@ -42,4 +42,12 @@ class InMemoryPostRepository : PostRepository {
         data.value = sharedPost
     }
 
+    override fun view() {
+        val currentPost = checkNotNull(data.value) {
+            "data value should not be null"
+        }
+
+        val viewedPost = currentPost.copy(views = currentPost.views + 1U)
+        data.value = viewedPost
+    }
 }

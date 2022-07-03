@@ -9,4 +9,6 @@ interface PostRepository {
     fun like()
 
     fun share()
+
+    fun view()
 }
