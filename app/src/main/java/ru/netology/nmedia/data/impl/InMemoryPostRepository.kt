@@ -5,12 +5,15 @@ import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
 
 class InMemoryPostRepository : PostRepository {
+
+    private var nextId: ULong = 11U
+
     override val data = MutableLiveData(
-        List(100) { index ->
+        List(10) { index ->
             Post(
                 id = index.toULong() + 1U,
                 author = "Alex",
-                content = "some strange content here #$index",
+                content = "some strange content here #${index.toULong() + 1U}",
                 published = System.currentTimeMillis(),
                 likes = 0U,
                 shares = 0U,
@@ -50,5 +53,27 @@ class InMemoryPostRepository : PostRepository {
             if (it.id != postId) it
             else it.copy(views = it.shares + 1U)
         }
+    }
+
+    override fun delete(postId: ULong) {
+        data.value = posts.filter { it.id != postId }
+    }
+
+    override fun save(post: Post) {
+        if (post.id.equals(PostRepository.NEW_POST_ID)) {
+            insert(post)
+        } else {
+            update(post)
+        }
+    }
+
+    private fun update(post: Post) {
+        data.value = posts.map {
+            if (it.id == post.id) post else it
+        }
+    }
+
+    private fun insert(post: Post) {
+        data.value = listOf(post.copy(id = ++nextId)) + posts
     }
 }
