@@ -41,13 +41,18 @@
         app:layout_constraintTop_toBottomOf="@id/authorName"
         android:textColor="@color/common_color" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/options"
+        style="@style/Widget.App.Button.IconOnly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:checkable="false"
         android:contentDescription="@string/options_description"
-        android:src="@drawable/ic_options_24dp"
+        app:backgroundTint="#FFFFFF"
+        app:icon="@drawable/ic_options_24dp"
+        app:iconTint="@color/common_color"
+        app:strokeColor="@android:color/transparent"
+        app:iconGravity="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
@@ -75,51 +80,35 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="postText" />
 
-    <ImageView
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/likePic"
-        android:layout_width="@dimen/bottom_icon_size"
-        android:layout_height="@dimen/bottom_icon_size"
-        android:layout_marginTop="@dimen/common_spacing"
+        style="@style/Widget.AppTheme.LikeCheckBox"
+        android:layout_width="@dimen/material_count_size"
+        android:layout_height="wrap_content"
+        android:button="@drawable/ic_like_24dp"
+        android:checkable="true"
+        android:textAlignment="textStart"
         android:contentDescription="@string/likes_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottomBarrier"
-        android:src="@drawable/ic_favorite_border_24dp" />
+        tools:text="0" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/likesCount"
-        android:layout_width="@dimen/count_size"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sharesPic"
+        style="@style/Widget.AppTheme.PostIconBar"
+        android:layout_width="@dimen/material_count_size"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_spacing"
-        android:singleLine="true"
+        android:button="@drawable/ic_share_24dp"
+        android:textAlignment="textStart"
+        android:contentDescription="@string/shares_description"
+        app:icon="@drawable/ic_share_24dp"
         app:layout_constraintBottom_toBottomOf="@id/likePic"
         app:layout_constraintTop_toTopOf="@id/likePic"
         app:layout_constraintStart_toEndOf="@id/likePic"
-        android:textColor="@color/common_color"
-        android:text="@string/no_value" />
-
-    <ImageView
-        android:id="@+id/sharesPic"
-        android:layout_width="@dimen/bottom_icon_size"
-        android:layout_height="@dimen/bottom_icon_size"
-        android:contentDescription="@string/shares_description"
-        app:layout_constraintBottom_toBottomOf="@id/likePic"
-        app:layout_constraintTop_toTopOf="@id/likePic"
-        app:layout_constraintStart_toEndOf="@id/likesCount"
-        android:src="@drawable/ic_share_24dp" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sharesCount"
-        android:layout_width="@dimen/count_size"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_spacing"
-        android:singleLine="true"
-        app:layout_constraintBottom_toBottomOf="@id/likePic"
-        app:layout_constraintTop_toTopOf="@id/likePic"
         app:layout_constraintEnd_toStartOf="@+id/viewsPic"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/sharesPic"
-        android:textColor="@color/common_color"
-        android:text="@string/no_value" />
+        tools:text="0" />
+
 
     <ImageView
         android:id="@+id/viewsPic"
