@@ -11,4 +11,12 @@ interface PostRepository {
     fun share(postId: ULong)
 
     fun view(postId: ULong)
+
+    fun delete(postId: ULong)
+
+    fun save(post: Post)
+
+    companion object {
+        const val NEW_POST_ID: ULong = 0U
+    }
 }

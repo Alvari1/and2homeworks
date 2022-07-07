@@ -6,7 +6,14 @@
     <string name="shares_description">Share pic</string>
     <string name="views_description">Share pic</string>
     <string name="options_description">Options</string>
+    <string name="save_description">Save</string>
+
     <string name="sample_text">Обратите внимание на блок с количеством просмотров. С ним есть небольшая проблема (поскольку он расположен справа). Если количество просмотров вырастет, например, до 500, то есть целых два варианта: Отталкиваться от текста (т.е. установить фиксированное расстояние от текста до границы родителя, а саму иконку приклеить к границе текста) Оставить достаточное количество места, чтобы уместилось и 500 и 1К, тогда на всех карточках положение этого блока будет одинаковым</string>
     <string name="no_value">0</string>
+
+    <string name="post_text">Post Text</string>
+
+    <string name="menu_remove">Remove</string>
+    <string name="menu_edit">Edit</string>
 
 </resources>

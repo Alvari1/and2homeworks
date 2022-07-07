@@ -1,35 +1,52 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.nmedia.R
+import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.PostListItemBinding
 import ru.netology.nmedia.dto.Post
 import java.text.SimpleDateFormat
 
-typealias OnPostLikeClicked = (Post) -> Unit
-typealias OnPostShareClicked = (Post) -> Unit
-
 internal class PostsAdapter(
-    private val onLikeClicked: OnPostLikeClicked,
-    private val onShareClicked: OnPostShareClicked
+    private val interactionListener: PostInteractionListener,
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(
         private val binding: PostListItemBinding,
-        onLikeClicked: OnPostLikeClicked,
-        onShareClicked: OnPostShareClicked
-
+        listener: PostInteractionListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post
 
+        private val popupMenu by lazy {
+            PopupMenu(itemView.context, binding.options).apply {
+                inflate(R.menu.options_post)
+                setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.remove -> {
+                            listener.onPostRemoveClicked(post)
+                            true
+                        }
+                        R.id.edit -> {
+                            listener.onPostEditClicked(post)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
+        }
+
         init {
-            binding.likePic.setOnClickListener { onLikeClicked(post) }
-            binding.sharesPic.setOnClickListener { onShareClicked(post) }
+            binding.likePic.setOnClickListener { listener.onPostLikeClicked(post) }
+            binding.sharesPic.setOnClickListener { listener.onPostShareClicked(post) }
         }
 
         fun bind(post: Post) {
@@ -43,7 +60,9 @@ internal class PostsAdapter(
                 likesCount.text = getFormattedCounter(post.likes)
                 sharesCount.text = getFormattedCounter(post.shares)
                 viewsCount.text = getFormattedCounter(post.views)
+
                 likePic.setImageResource(getLikeIconResId(post.likedByMe))
+                options.setOnClickListener { popupMenu.show() }
             }
         }
 
@@ -84,8 +103,7 @@ internal class PostsAdapter(
         val binding = PostListItemBinding.inflate(inflator, parent, false)
         return ViewHolder(
             binding = binding,
-            onLikeClicked = onLikeClicked,
-            onShareClicked = onShareClicked
+            listener = interactionListener
         )
     }
 
