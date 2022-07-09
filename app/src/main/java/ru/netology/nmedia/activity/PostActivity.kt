@@ -17,7 +17,6 @@ class PostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel: PostViewModel by viewModels()
 
         val binding = ActivityNewPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
