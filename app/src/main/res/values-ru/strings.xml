@@ -3,11 +3,15 @@
     <string name="app_name">NMedia</string>
     <string name="hello">Привет, Мир!</string>
     <string name="avatar_description">Аватар автора</string>
-    <string name="likes_description">Лайков</string>
-    <string name="shares_description">Связей</string>
-    <string name="views_description">Просмотров</string>
+    <string name="likes_description">Лайки</string>
+    <string name="shares_description">Связи</string>
+    <string name="views_description">Просмотры</string>
     <string name="options_description">Опции</string>
     <string name="save_description">Сохранить</string>
+    <string name="share_intent_title">Поделиться</string>
+    <string name="share_intent_empty_text_error">Текст пустой</string>
+
+    <string name="description_post_edit_submit">Submit edit</string>
 
     <string name="sample_text">Обратите внимание на блок с количеством просмотров. С ним есть небольшая проблема (поскольку он расположен справа). Если количество просмотров вырастет, например, до 500, то есть целых два варианта: Отталкиваться от текста (т.е. установить фиксированное расстояние от текста до границы родителя, а саму иконку приклеить к границе текста) Оставить достаточное количество места, чтобы уместилось и 500 и 1К, тогда на всех карточках положение этого блока будет одинаковым</string>
     <string name="no_value">0</string>
@@ -16,4 +20,9 @@
 
     <string name="menu_remove">Удалить</string>
     <string name="menu_edit">Изменить</string>
+
+    <string name="choose_player">Выберите видеопроигрыватель</string>
+    <string name="add_post">Добавить пост</string>
+
+
 </resources>

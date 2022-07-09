@@ -9,4 +9,5 @@ data class Post(
     val likedByMe: Boolean = false,
     val shares: ULong = 0U,
     val views: ULong = 0U,
+    val videoURL: String? = "https://www.youtube.com/watch?v=WhWc3b3KhnY",
 )
