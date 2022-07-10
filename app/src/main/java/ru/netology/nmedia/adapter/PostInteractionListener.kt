@@ -8,5 +8,5 @@ interface PostInteractionListener {
     fun onPostRemoveClicked(post: Post)
     fun onPostEditClicked(post: Post)
     fun onCancelEditClicked()
-
+    fun onPlayVideoClicked(post: Post)
 }

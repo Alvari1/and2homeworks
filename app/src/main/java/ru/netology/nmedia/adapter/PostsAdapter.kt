@@ -4,12 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
-import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.PostListItemBinding
 import ru.netology.nmedia.dto.Post
 import java.text.SimpleDateFormat
@@ -49,6 +47,13 @@ internal class PostsAdapter(
             binding.sharesPic.setOnClickListener { listener.onPostShareClicked(post) }
 
             binding.options.setOnClickListener { popupMenu.show() }
+
+            binding.playButton.setOnClickListener {
+                listener.onPlayVideoClicked(post)
+            }
+            binding.video.setOnClickListener {
+                listener.onPlayVideoClicked(post)
+            }
         }
 
         fun bind(post: Post) {
@@ -64,7 +69,10 @@ internal class PostsAdapter(
                 likePic.text = getFormattedCounter(post.likes)
 
                 sharesPic.text = getFormattedCounter(post.shares)
-                viewsCount.text = getFormattedCounter(post.views)
+                viewsPic.text = getFormattedCounter(post.views)
+
+                videoGroup.visibility =
+                    if (post.videoURL.isNullOrBlank()) View.GONE else View.VISIBLE
             }
         }
 

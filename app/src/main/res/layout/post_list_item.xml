@@ -68,7 +68,7 @@
         android:id="@+id/postText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/headerBarrier"
+        app:layout_constraintTop_toBottomOf="@id/video"
         android:layout_marginTop="@dimen/small_spacing"
         android:textColor="@color/common_color"
         tools:text="@tools:sample/lorem" />
@@ -110,25 +110,47 @@
         tools:text="0" />
 
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/viewsPic"
-        android:layout_width="@dimen/bottom_icon_size"
-        android:layout_height="@dimen/bottom_icon_size"
+        style="@style/Widget.AppTheme.PostIconBar"
+        android:layout_width="@dimen/material_count_size"
+        android:layout_height="wrap_content"
+        android:button="@drawable/ic_visibility_24dp"
+        app:icon="@drawable/ic_visibility_24dp"
+        android:textAlignment="textStart"
         android:layout_marginEnd="@dimen/small_spacing"
         android:contentDescription="@string/views_description"
+        android:clickable="false"
         app:layout_constraintBottom_toBottomOf="@id/likePic"
         app:layout_constraintTop_toTopOf="@id/likePic"
-        app:layout_constraintEnd_toStartOf="@id/viewsCount"
-        android:src="@drawable/ic_visibility_24dp" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/viewsCount"
-        android:layout_width="@dimen/count_size"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        app:layout_constraintBottom_toBottomOf="@id/sharesPic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/sharesPic"
-        android:textColor="@color/common_color"
-        android:text="@string/no_value" />
+        tools:text="0" />
+
+    <FrameLayout
+        android:id="@+id/video"
+        android:layout_width="@dimen/width_video_pic"
+        android:layout_height="@dimen/height_video_pic"
+        android:background="@drawable/video"
+        android:layout_margin="@dimen/common_spacing"
+        app:layout_constraintTop_toBottomOf="@id/headerBarrier"
+        app:layout_constraintBottom_toTopOf="@id/postText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"></FrameLayout>
+
+    <ImageButton
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_play_24dp"
+        app:layout_constraintEnd_toEndOf="@id/video"
+        app:layout_constraintStart_toStartOf="@id/video"
+        app:layout_constraintTop_toTopOf="@id/video"
+        app:layout_constraintBottom_toBottomOf="@id/video" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/videoGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="video,playButton"
+        android:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
