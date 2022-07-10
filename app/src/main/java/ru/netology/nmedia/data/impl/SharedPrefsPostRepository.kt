@@ -10,17 +10,21 @@ import kotlinx.serialization.json.Json
 import ru.netology.nmedia.SingleLiveEvent
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
+import kotlin.properties.Delegates
 
 class SharedPrefsPostRepository(
     application: Application
 ) : PostRepository {
-
-    private var nextId: ULong = (GENERATED_POSTS_AMOUNT + 1).toULong()
-
     private val preferences = application.getSharedPreferences(
         "repo",
         Context.MODE_PRIVATE
     )
+
+    private var nextId: ULong by Delegates.observable(
+        preferences.getLong(NEXTID_PREFERENCES_KEY, 0).toULong()
+    ) { _, _, newValue ->
+        preferences.edit { putLong(NEXTID_PREFERENCES_KEY, newValue.toLong()) }
+    }
 
     override val data: MutableLiveData<List<Post>>
 
@@ -99,5 +103,6 @@ class SharedPrefsPostRepository(
     companion object {
         const val GENERATED_POSTS_AMOUNT = 10
         const val POSTS_PREFERENCES_KEY = "posts"
+        const val NEXTID_PREFERENCES_KEY = "nextId"
     }
 }

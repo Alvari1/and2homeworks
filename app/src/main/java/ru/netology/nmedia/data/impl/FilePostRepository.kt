@@ -2,17 +2,28 @@ package ru.netology.nmedia.data.impl
 
 import android.app.Application
 import android.content.Context
+import androidx.core.content.edit
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.SingleLiveEvent
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
+import kotlin.properties.Delegates
 
 class FilePostRepository(
     private val application: Application
 ) : PostRepository {
-    private var nextId: ULong = 11U
+    private val preferences = application.getSharedPreferences(
+        "repo",
+        Context.MODE_PRIVATE
+    )
+
+    private var nextId: ULong by Delegates.observable(
+        preferences.getLong(NEXTID_PREFERENCES_KEY, 0).toULong()
+    ) { _, _, newValue ->
+        preferences.edit { putLong(NEXTID_PREFERENCES_KEY, newValue.toLong()) }
+    }
 
     override val data: MutableLiveData<List<Post>>
 
@@ -96,5 +107,6 @@ class FilePostRepository(
 
     private companion object {
         const val FILE_NAME = "posts.json"
+        const val NEXTID_PREFERENCES_KEY = "nextId"
     }
 }
