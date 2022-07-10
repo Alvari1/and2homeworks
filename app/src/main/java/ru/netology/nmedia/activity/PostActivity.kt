@@ -8,10 +8,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityNewPostBinding
-import ru.netology.nmedia.viewModel.PostViewModel
 
 class PostActivity : AppCompatActivity() {
 

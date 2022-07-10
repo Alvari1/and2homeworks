@@ -1,5 +1,6 @@
 package ru.netology.nmedia.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -25,9 +26,11 @@ class ShareActivity : AppCompatActivity() {
                 Snackbar.LENGTH_INDEFINITE
             ).setAction(android.R.string.ok) {
                 finish()
+                setResult(Activity.RESULT_CANCELED, intent)
             }.show()
         } else {
             binding.root.text = text
+            setResult(Activity.RESULT_OK, intent)
         }
     }
 }

@@ -1,10 +1,14 @@
 package ru.netology.nmedia.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import ru.netology.nmedia.SingleLiveEvent
 import ru.netology.nmedia.dto.Post
 
 interface PostRepository {
     val data: LiveData<List<Post>>
+    val shareEvent: SingleLiveEvent<String>
+    val currentPost: MutableLiveData<Post?>
 
     fun like(postId: ULong)
 
