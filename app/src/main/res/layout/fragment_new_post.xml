@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.PostActivity">
+    android:windowSoftInputMode="adjustResize"
+    tools:context=".activity.NewPostFragment">
 
     <EditText
         android:id="@+id/edit"

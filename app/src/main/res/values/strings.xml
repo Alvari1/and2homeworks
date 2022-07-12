@@ -9,6 +9,7 @@
     <string name="save_description">Save</string>
     <string name="share_intent_title">Share</string>
     <string name="share_intent_empty_text_error">This text is blank</string>
+    <string name="content_empty_text_error">This text is blank</string>
 
     <string name="description_post_edit_submit">Submit edit</string>
 

@@ -55,7 +55,7 @@ class InMemoryPostRepository(
     override fun view(postId: ULong) {
         data.value = posts.map {
             if (it.id != postId) it
-            else it.copy(views = it.shares + 1U)
+            else it.copy(views = it.views + 1U)
         }
     }
 

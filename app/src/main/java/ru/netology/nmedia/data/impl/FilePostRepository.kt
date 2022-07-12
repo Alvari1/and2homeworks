@@ -26,9 +26,9 @@ class FilePostRepository(
     }
 
     override val data: MutableLiveData<List<Post>>
-
     override val shareEvent = SingleLiveEvent<String>()
     override val currentPost = MutableLiveData<Post?>(null)
+
     private val gson = Gson()
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
 
@@ -71,7 +71,7 @@ class FilePostRepository(
     override fun view(postId: ULong) {
         posts = posts.map {
             if (it.id != postId) it
-            else it.copy(views = it.shares + 1U)
+            else it.copy(views = it.views + 1U)
         }
     }
 

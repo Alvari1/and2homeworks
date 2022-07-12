@@ -74,7 +74,7 @@ class SharedPrefsPostRepository(
     override fun view(postId: ULong) {
         posts = posts.map {
             if (it.id != postId) it
-            else it.copy(views = it.shares + 1U)
+            else it.copy(views = it.views + 1U)
         }
     }
 

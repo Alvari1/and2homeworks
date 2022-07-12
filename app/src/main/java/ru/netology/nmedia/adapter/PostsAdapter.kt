@@ -8,17 +8,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
-import ru.netology.nmedia.databinding.PostListItemBinding
+import ru.netology.nmedia.databinding.PostItemBinding
 import ru.netology.nmedia.dto.Post
 import java.text.SimpleDateFormat
 
 internal class PostsAdapter(
     private val interactionListener: PostInteractionListener,
+    private val isPreviewMode: Boolean = false
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(
-        private val binding: PostListItemBinding,
-        listener: PostInteractionListener
+        private val binding: PostItemBinding,
+        listener: PostInteractionListener,
+        isPreviewMode: Boolean = false
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post
@@ -51,8 +53,15 @@ internal class PostsAdapter(
             binding.playButton.setOnClickListener {
                 listener.onPlayVideoClicked(post)
             }
+
             binding.video.setOnClickListener {
                 listener.onPlayVideoClicked(post)
+            }
+
+            if (!isPreviewMode) {
+                binding.postItem.setOnClickListener {
+                    listener.onPostItemClicked(post)
+                }
             }
         }
 
@@ -105,10 +114,12 @@ internal class PostsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflator = LayoutInflater.from(parent.context)
-        val binding = PostListItemBinding.inflate(inflator, parent, false)
+        val binding = PostItemBinding.inflate(inflator, parent, false)
+
         return ViewHolder(
             binding = binding,
-            listener = interactionListener
+            listener = interactionListener,
+            isPreviewMode = isPreviewMode
         )
     }
 

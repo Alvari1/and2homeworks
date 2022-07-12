@@ -19,8 +19,10 @@ class PostViewModel(application: Application) : AndroidViewModel(application),
     val shareEvent by repository::shareEvent
     val currentPost by repository::currentPost
 
-    val navigateToPostContentScreenEvent = SingleLiveEvent<Unit>()
     val playVideoURL = SingleLiveEvent<String?>()
+    val navigatePostEdit = SingleLiveEvent<String?>()
+    val navigatePostItem = SingleLiveEvent<ULong>()
+    val navigatePostDelete = SingleLiveEvent<ULong>()
 
     fun onSaveButtonClicked(content: String) {
         if (content.isBlank()) return
@@ -41,8 +43,6 @@ class PostViewModel(application: Application) : AndroidViewModel(application),
         currentPost.value = null
     }
 
-    fun viewed(post: Post) = repository.view(post.id)
-
     override fun onPostLikeClicked(post: Post) {
         repository.like(post.id)
     }
@@ -52,16 +52,14 @@ class PostViewModel(application: Application) : AndroidViewModel(application),
         repository.share(post.id)
     }
 
-    override fun onPostRemoveClicked(post: Post) =
+    override fun onPostRemoveClicked(post: Post) {
         repository.delete(post.id)
+        navigatePostDelete.value = post?.id
+    }
 
     override fun onPostEditClicked(post: Post) {
         currentPost.value = post
-        navigateToPostContentScreenEvent.call()
-    }
-
-    fun onAddPostClicked() {
-        navigateToPostContentScreenEvent.call()
+        navigatePostEdit.value = post?.content
     }
 
     override fun onCancelEditClicked() {
@@ -70,5 +68,10 @@ class PostViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onPlayVideoClicked(post: Post) {
         playVideoURL.value = post.videoURL
+    }
+
+    override fun onPostItemClicked(post: Post) {
+        repository.view(post.id)
+        navigatePostItem.value = post?.id
     }
 }
