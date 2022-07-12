@@ -39,7 +39,7 @@ class PreviewPostFragment : Fragment() {
             }
         }
 
-        viewModel.shareEvent.observe(this) { postContent ->
+        viewModel.shareEvent.observe(viewLifecycleOwner) { postContent ->
             val intent = Intent().apply {
                 action = Intent.ACTION_SEND
                 putExtra(Intent.EXTRA_TEXT, postContent)
