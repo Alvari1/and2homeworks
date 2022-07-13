@@ -1,15 +1,16 @@
 package ru.netology.nmedia.data.impl
 
 import androidx.lifecycle.MutableLiveData
+import ru.netology.nmedia.SingleLiveEvent
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
 
-class InMemoryPostRepository : PostRepository {
-
-    private var nextId: ULong = 11U
+class InMemoryPostRepository(
+) : PostRepository {
+    private var nextId = (GENERATED_POSTS_AMOUNT + 1).toULong()
 
     override val data = MutableLiveData(
-        List(10) { index ->
+        List(GENERATED_POSTS_AMOUNT) { index ->
             Post(
                 id = index.toULong() + 1U,
                 author = "Alex",
@@ -22,6 +23,9 @@ class InMemoryPostRepository : PostRepository {
             )
         }
     )
+
+    override val shareEvent = SingleLiveEvent<String>()
+    override val currentPost = MutableLiveData<Post?>(null)
 
     private val posts
         get() = checkNotNull(data.value) {
@@ -51,7 +55,7 @@ class InMemoryPostRepository : PostRepository {
     override fun view(postId: ULong) {
         data.value = posts.map {
             if (it.id != postId) it
-            else it.copy(views = it.shares + 1U)
+            else it.copy(views = it.views + 1U)
         }
     }
 
@@ -75,5 +79,9 @@ class InMemoryPostRepository : PostRepository {
 
     private fun insert(post: Post) {
         data.value = listOf(post.copy(id = ++nextId)) + posts
+    }
+
+    companion object {
+        const val GENERATED_POSTS_AMOUNT = 10
     }
 }

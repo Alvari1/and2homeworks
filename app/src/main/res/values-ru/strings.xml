@@ -10,6 +10,7 @@
     <string name="save_description">Сохранить</string>
     <string name="share_intent_title">Поделиться</string>
     <string name="share_intent_empty_text_error">Текст пустой</string>
+    <string name="content_empty_text_error">Текст пустой</string>
 
     <string name="description_post_edit_submit">Submit edit</string>
 
