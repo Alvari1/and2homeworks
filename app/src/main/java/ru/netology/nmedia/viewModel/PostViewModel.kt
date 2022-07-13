@@ -67,7 +67,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application),
     }
 
     override fun onPlayVideoClicked(post: Post) {
-        playVideoURL.value = post.videoURL
+        playVideoURL.value = post.url
     }
 
     override fun onPostItemClicked(post: Post) {

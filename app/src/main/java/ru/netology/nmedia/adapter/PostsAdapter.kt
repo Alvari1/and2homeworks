@@ -81,7 +81,7 @@ internal class PostsAdapter(
                 viewsPic.text = getFormattedCounter(post.views)
 
                 videoGroup.visibility =
-                    if (post.videoURL.isNullOrBlank()) View.GONE else View.VISIBLE
+                    if (post.url.isNullOrBlank()) View.GONE else View.VISIBLE
             }
         }
 
