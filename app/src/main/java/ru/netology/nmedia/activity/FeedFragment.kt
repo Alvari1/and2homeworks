@@ -39,7 +39,7 @@ class FeedFragment : Fragment() {
             adapter.submitList(posts)
         }
 
-        viewModel.shareEvent.observe(viewLifecycleOwner) { postContent ->
+        viewModel.navigatePostShare.observe(viewLifecycleOwner) { postContent ->
             val intent = Intent().apply {
                 action = Intent.ACTION_SEND
                 putExtra(Intent.EXTRA_TEXT, postContent)

@@ -2,25 +2,23 @@ package ru.netology.nmedia.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ru.netology.nmedia.SingleLiveEvent
 import ru.netology.nmedia.dto.Post
 
 interface PostRepository {
-    val data: LiveData<List<Post>>
-    val shareEvent: SingleLiveEvent<String>
+    fun getAll(): LiveData<List<Post>>
     val currentPost: MutableLiveData<Post?>
 
-    fun like(postId: ULong)
+    fun like(postId: Long)
 
-    fun share(postId: ULong)
+    fun share(postId: Long)
 
-    fun view(postId: ULong)
+    fun view(postId: Long)
 
-    fun delete(postId: ULong)
+    fun delete(postId: Long)
 
     fun save(post: Post)
 
     companion object {
-        const val NEW_POST_ID: ULong = 0U
+        const val NEW_POST_ID: Long = 0L
     }
 }
