@@ -85,26 +85,26 @@ internal class PostsAdapter(
             }
         }
 
-        private fun getFormattedCounter(amount: ULong) = when (amount) {
-            in 0U..999U -> amount.toString()
-            in 1000U..1099U -> (amount / 1000U).toString().plus("K")
-            in 1100U..999999U -> {
-                val temp = amount / 100U
+        private fun getFormattedCounter(amount: Long) = when (amount) {
+            in 0..999 -> amount.toString()
+            in 1000..1099 -> (amount / 1000).toString().plus("K")
+            in 1100..999999 -> {
+                val temp = amount / 100
                 if (temp.toDouble() % 10 > 0)
                     temp.toDouble().div(10).toString().plus("K")
-                else (temp / 10U).toString().plus("K")
+                else (temp / 10).toString().plus("K")
             }
-            in 1000000UL..999999999UL -> {
-                val temp = amount / 100000U
+            in 1000000..999999999 -> {
+                val temp = amount / 100000
                 if (temp.toDouble() % 10 > 0)
                     temp.toDouble().div(10).toString().plus("M")
-                else (temp / 10U).toString().plus("M")
+                else (temp / 10).toString().plus("M")
             }
             else -> {
-                val temp = amount / 100000000U
+                val temp = amount / 100000000
                 if (temp.toDouble() % 10 > 0)
                     temp.toDouble().div(10).toString().plus("B")
-                else (temp / 10U).toString().plus("B")
+                else (temp / 10).toString().plus("B")
             }
         }
 
