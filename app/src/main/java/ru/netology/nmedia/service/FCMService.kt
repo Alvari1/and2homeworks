@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -13,7 +14,6 @@ import ru.netology.nmedia.R
 import ru.netology.nmedia.dto.Like
 import ru.netology.nmedia.dto.NewPost
 import ru.netology.nmedia.enum.Action
-import ru.netology.nmedia.util.cutStringWithDots
 import kotlin.random.Random
 
 class FCMService : FirebaseMessagingService() {
@@ -45,7 +45,7 @@ class FCMService : FirebaseMessagingService() {
     }
 
     override fun onNewToken(token: String) {
-        println("onNewToken $token")
+        Log.d("onNewToken", token)
     }
 
     private fun handleNewPost(serializedContent: String) {
@@ -58,12 +58,7 @@ class FCMService : FirebaseMessagingService() {
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(title)
-            .setContentText(
-                cutStringWithDots(
-                    newPostContext.postContent,
-                    CONTENT_LIMIT_TO_DOTS
-                )
-            )
+            .setContentText(newPostContext.postContent)
             .setStyle(
                 NotificationCompat.BigTextStyle()
                     .bigText(newPostContext.postContent)
@@ -96,6 +91,5 @@ class FCMService : FirebaseMessagingService() {
     companion object {
         const val CONTENT_KEY = "content"
         const val CHANNEL_ID = "remote"
-        const val CONTENT_LIMIT_TO_DOTS = 20
     }
 }
