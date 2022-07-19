@@ -24,6 +24,8 @@ local.properties
 captures/
 .externalNativeBuild
 .cxx
+fcm.json
+google-services.json
 
 ### NetBeans ###
 /nbproject/private/

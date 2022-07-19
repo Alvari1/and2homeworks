@@ -48,3 +48,11 @@ fun View.focusAndShowKeyboard() {
             })
     }
 }
+
+
+fun cutStringWithDots(text: String?, limit: Int) = if (text.isNullOrBlank()) text else {
+    if (text.length <= limit) text
+    else {
+        text.substring(0, limit) + "..."
+    }
+}.toString()
